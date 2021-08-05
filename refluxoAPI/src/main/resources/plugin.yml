@@ -1,0 +1,5 @@
+name: RefluxoApi
+version: ${project.version}
+main: me.refluxo.refluxoapi.Refluxoapi
+api-version: 1.16
+description: FICK DICH PLOCKI

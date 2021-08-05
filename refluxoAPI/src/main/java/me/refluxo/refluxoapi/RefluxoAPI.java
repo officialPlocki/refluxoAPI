@@ -10,8 +10,8 @@ public final class RefluxoAPI extends JavaPlugin {
         System.out.println("API wird geladen!");
 
 
-        System.out.println("API erfolgrich geladen");
 
+        System.out.println("API erfolgrich geladen");
     }
 
     @Override

@@ -14,6 +14,7 @@ public final class RefluxoAPI extends JavaPlugin {
         System.out.println("API erfolgrich geladen");
     }
 
+
     @Override
     public void onDisable() {
         // Plugin shutdown logic

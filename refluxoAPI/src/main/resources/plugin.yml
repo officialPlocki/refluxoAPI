@@ -1,5 +1,5 @@
 name: RefluxoApi
-version: ${project.version}
+version: 1.0
 main: me.refluxo.refluxoapi.Refluxoapi
 authors:
   - Refluxo Development

@@ -6,7 +6,11 @@ public final class RefluxoAPI extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+
+        System.out.println("API wird geladen!");
+
+
+        System.out.println("API erfolgrich geladen");
 
     }
 

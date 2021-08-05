@@ -1,8 +1,9 @@
 name: RefluxoApi
 version: ${project.version}
-main: me.refluxo.refluxoapi.RefluxoAPI
+main: me.refluxo.refluxoapi.Refluxoapi
 authors:
   - Refluxo Development
   - EinfachKonrad
-  - plocki
+  - officialPlocki
 api-version: 1.16
+description: FICK DICH PLOCKI

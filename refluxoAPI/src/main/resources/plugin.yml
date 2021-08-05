@@ -1,9 +1,8 @@
 name: RefluxoApi
-version: 1.0
-main: me.refluxo.refluxoapi.Refluxoapi
+version: ${project.version}
+main: me.refluxo.refluxoapi.RefluxoAPI
 authors:
   - Refluxo Development
   - EinfachKonrad
-  - officialPlocki
+  - plocki
 api-version: 1.16
-description: API für das Refluxo.me-Netzwerk

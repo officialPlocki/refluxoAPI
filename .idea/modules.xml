@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/refluxoAPI/refluxoAPI.iml" filepath="$PROJECT_DIR$/refluxoAPI/refluxoAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/refluxoAPI/refluxoapi.iml" filepath="$PROJECT_DIR$/refluxoAPI/refluxoapi.iml" />
     </modules>
   </component>
 </project>

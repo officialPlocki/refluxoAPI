@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="refluxoAPI" />
+        <module name="refluxoapi" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="refluxoAPI" target="1.8" />
+      <module name="refluxoapi" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

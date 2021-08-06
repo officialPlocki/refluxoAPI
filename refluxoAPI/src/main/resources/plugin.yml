@@ -1,8 +1,48 @@
-name: RefluxoApi
-version: ${project.version}
-main: me.refluxo.refluxoapi.RefluxoAPI
+main: me.refluxo.api.ServerAPI
 authors:
-  - Refluxo Development
-  - EinfachKonrad
   - plocki
-api-version: 1.16
+  - Refluxo Development
+softdepend:
+  - Vault
+api-version: 1.13
+name: ServerAPI
+load: STARTUP
+prefix: ServerAPI
+version: 1.2
+commands:
+  money:
+  euro:
+  dollar:
+  balance:
+  geld:
+  bal:
+  bargeld:
+  pay:
+  zahlen:
+  serverapi:
+  bapi:
+  api:
+  bits:
+  bit:
+  ecoadminmoney:
+  eam:
+  ecoadminbits:
+  eab:
+  gm:
+  gamemode:
+  gamem:
+  coin:
+  coins:
+  switch:
+  ems:
+  trade:
+  t:
+  tictactoe:
+  day:
+  night:
+  cc:
+  clearc:
+  clearchat:
+  chatc:
+  chatclear:
+  fly:

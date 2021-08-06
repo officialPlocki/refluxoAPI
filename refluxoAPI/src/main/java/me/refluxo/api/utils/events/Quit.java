@@ -1,6 +1,5 @@
 package me.refluxo.api.utils.events;
 
-import me.refluxo.api.ServerAPI;
 import me.refluxo.api.utils.player.APIPlayer;
 import me.refluxo.api.utils.player.Share;
 import org.bukkit.event.EventHandler;

@@ -34,7 +34,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ServerAPI extends JavaPlugin {
+public class RefluxoAPI extends JavaPlugin {
     private static Plugin pl;
 
     private static FileBuilder fb;

@@ -2,7 +2,7 @@ package me.refluxo.api.utils.bungee;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
-import me.refluxo.api.ServerAPI;
+import me.refluxo.api.RefluxoAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -15,7 +15,7 @@ public class BungeeCord {
         out.writeUTF("ConnectOther");
         out.writeUTF(player.getPlayer().getName());
         out.writeUTF(server);
-        Bukkit.getServer().sendPluginMessage(ServerAPI.getInstance(), "BungeeCord", out.toByteArray());
+        Bukkit.getServer().sendPluginMessage(RefluxoAPI.getInstance(), "BungeeCord", out.toByteArray());
     }
 
     public void kickPlayer(Player player, String message) {
@@ -23,7 +23,7 @@ public class BungeeCord {
         out.writeUTF("KickPlayer");
         out.writeUTF(player.getPlayer().getName());
         out.writeUTF(message);
-        Bukkit.getServer().sendPluginMessage(ServerAPI.getInstance(), "BungeeCord", out.toByteArray());
+        Bukkit.getServer().sendPluginMessage(RefluxoAPI.getInstance(), "BungeeCord", out.toByteArray());
     }
 
 }

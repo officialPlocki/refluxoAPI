@@ -1,10 +1,9 @@
 package me.refluxo.api.commands;
 
-import me.refluxo.api.ServerAPI;
+import me.refluxo.api.RefluxoAPI;
 import me.refluxo.api.utils.player.APIPlayer;
 import me.refluxo.api.utils.player.EMSPlayer;
 import me.refluxo.api.utils.player.Language;
-import me.refluxo.api.utils.server.global.ems.InvTypes;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -122,7 +121,7 @@ public class EMSCommand extends Language implements CommandExecutor, Listener {
                     }
                 } else if(itemName.equalsIgnoreCase("§8» §a§lUpgrades §8«")) {
                     e.getWhoClicked().closeInventory();
-                    Bukkit.getScheduler().runTaskLater(ServerAPI.getInstance(), () -> {
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
                         Inventory invnew = Bukkit.createInventory(null, 5*9, "§b§lRe§f§lfluxo§e§lEMS");
                         ItemStack glass = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
                         ItemMeta glassMeta = glass.getItemMeta();

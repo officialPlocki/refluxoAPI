@@ -1,6 +1,6 @@
 package me.refluxo.api.utils.server.global.ems;
 
-import me.refluxo.api.ServerAPI;
+import me.refluxo.api.RefluxoAPI;
 import me.refluxo.api.utils.mysql.MySQLService;
 import me.refluxo.api.utils.player.APIPlayer;
 import me.refluxo.api.utils.player.EMSPlayer;
@@ -111,7 +111,7 @@ public class EMSApi {
     }
 
     public static void generate() {
-        Bukkit.getScheduler().scheduleAsyncRepeatingTask(ServerAPI.getInstance(), () -> {
+        Bukkit.getScheduler().scheduleAsyncRepeatingTask(RefluxoAPI.getInstance(), () -> {
             for(Player all : Bukkit.getOnlinePlayers()) {
                 APIPlayer a = new APIPlayer(all);
                 EMSPlayer p = new EMSPlayer(a);

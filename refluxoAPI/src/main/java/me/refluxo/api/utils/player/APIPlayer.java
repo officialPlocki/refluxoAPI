@@ -1,6 +1,6 @@
 package me.refluxo.api.utils.player;
 
-import me.refluxo.api.ServerAPI;
+import me.refluxo.api.RefluxoAPI;
 import me.refluxo.api.utils.server.global.BitsAPI;
 import me.refluxo.api.utils.server.local.CoinsAPI;
 import org.bukkit.GameMode;
@@ -21,7 +21,7 @@ public class APIPlayer {
     }
 
     private String getPrefixInit(Player p) {
-        share = new Share(p, ServerAPI.server);
+        share = new Share(p, RefluxoAPI.server);
         if(player.hasPermission("refluxo.inhaber")) {
             return "§4Inhaber §8» §7";
         } else if(player.hasPermission("refluxo.admin")) {

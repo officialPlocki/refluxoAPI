@@ -1,6 +1,6 @@
 package me.refluxo.api.utils.server.plugin;
 
-import me.refluxo.api.ServerAPI;
+import me.refluxo.api.RefluxoAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
@@ -13,7 +13,7 @@ public class ListenerManager {
     }
 
     public void registerListener() {
-        Bukkit.getPluginManager().registerEvents(lis, ServerAPI.getInstance());
+        Bukkit.getPluginManager().registerEvents(lis, RefluxoAPI.getInstance());
     }
 
 }

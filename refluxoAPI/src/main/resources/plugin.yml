@@ -1,13 +1,14 @@
-main: me.refluxo.api.ServerAPI
+main: me.refluxo.api.RefluxoAPI
 authors:
   - plocki
+  - EinfachKlorand
   - Refluxo Development
 softdepend:
   - Vault
 api-version: 1.13
-name: ServerAPI
+name: RefluxoAPI
 load: STARTUP
-prefix: ServerAPI
+prefix: RefluxoAPI
 version: 1.2
 commands:
   money:

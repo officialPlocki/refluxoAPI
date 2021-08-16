@@ -82,6 +82,12 @@ public class RefluxoAPI extends JavaPlugin {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        try {
+            PreparedStatement ps = service.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS settings(uuid varchar(36), ChatAds TEXT, InventoryAnimations TEXT, Notifications TEXT, Particles TEXT, Sound TEXT, AllowFriendRequests TEXT, AllowMessagesFromEveryone TEXT, AllowMessages TEXT)");
+            service.executeUpdate(ps);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         MySQLService.setMaxConnections();
         PermissionManager permissionManager = new PermissionManager("ServerAPI");
         permissionManager.addPermission("api.cmd");
@@ -185,33 +191,29 @@ public class RefluxoAPI extends JavaPlugin {
             @Override
             public void run() {
                 switch (i) {
-                    case 0:
-                        i = 1;
-                        Bukkit.broadcastMessage("§8»\n\n§8» §eWusstest du schon, dass du mit §b/trade§e Bits in Coins umtauschen kannst?\n\n§8»");
-                        return;
                     case 1:
                         i = 2;
-                        Bukkit.broadcastMessage("§8»\n\n§8» §eWusstest du schon, dass du mit §b/ems§e Bits automatisch erhalten kannst?\n\n§8»");
+                        Bukkit.broadcastMessage("§8»\n\n§8» §eVersuche jetzt §b/ems§e!\n\n§8»");
                         return;
                     case 2:
                         i = 3;
-                        Bukkit.broadcastMessage("§8»\n\n§8» §eWir haben auch einen Discord!§r https://refluxo.link/discord\n\n§8»");
+                        Bukkit.broadcastMessage("§8»\n\n§8» §eUnser Discord:§r https://refluxo.link/discord\n\n§8»");
                         return;
                     case 3:
                         i = 4;
-                        Bukkit.broadcastMessage("§8»\n\n§8» §eWir haben auch einen TeamSpeak!§r ts.refluxo.me\n\n§8»");
+                        Bukkit.broadcastMessage("§8»\n\n§8» §eUnser TeamSpeak:§r ts.refluxo.me\n\n§8»");
                         return;
                     case 4:
                         i = 5;
-                        Bukkit.broadcastMessage("§8»\n\n§8» §eWir sagen dir, was an Plugins verwenden!§r https://refluxo.link/plugins\n\n§8»");
+                        Bukkit.broadcastMessage("§8»\n\n§8» §eVerwendete Plugins:§r https://refluxo.link/plugins\n\n§8»");
                         return;
                     case 5:
                         i = 6;
-                        Bukkit.broadcastMessage("§8»\n\n§8» §eWir haben auch eine Website!§r https://refluxo.me\n\n§8»");
+                        Bukkit.broadcastMessage("§8»\n\n§8» §eUnsere Website:§r https://refluxo.me\n\n§8»");
                         return;
                     case 6:
-                        i = 0;
-                        Bukkit.broadcastMessage("§8»\n\n§8» §eWir sind Partner von xPlugins!§r https://refluxo.link/partner\n\n§8»");
+                        i = 1;
+                        Bukkit.broadcastMessage("§8»\n\n§8» §eHier kannst du unsere Partner sehen:§r https://refluxo.link/partner\n\n§8»");
                         return;
                 }
             }

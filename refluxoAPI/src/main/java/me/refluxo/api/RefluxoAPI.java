@@ -195,7 +195,6 @@ public class RefluxoAPI extends JavaPlugin {
     }
 
     private void autoBroadcast() {
-        int i = 0;
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(getInstance(), new Runnable() {
 
             int i = 0;

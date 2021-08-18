@@ -186,7 +186,7 @@ public class EMSCommand extends Language implements CommandExecutor, Listener {
                             invnew.setItem(24, blocked);
                         }
                         ((Player) e.getWhoClicked()).openInventory(invnew);
-                    }, 20);
+                    }, 8);
                 }
             }
         }

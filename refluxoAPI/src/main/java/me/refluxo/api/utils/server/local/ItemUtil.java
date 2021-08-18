@@ -9,9 +9,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemUtil {
-    public String displayname;
-    public Material material;
-    public List<String> lore;
+    private String displayname;
+    private Material material;
+    private List<String> lore;
+    private ItemStack item;
+    private int amount = 1;
+
+    public ItemUtil(final String displayname, ItemStack item, final String lore) {
+        this.lore = new ArrayList<String>();
+        this.displayname = displayname;
+        this.item = item;
+        if (lore != null) {
+            this.lore.clear();
+            this.lore.add(" ");
+            this.lore.add(lore);
+            this.lore.add("  ");
+        }
+    }
 
     public ItemUtil(final String displayname, final Material material, final String lore) {
         this.lore = new ArrayList<String>();
@@ -25,14 +39,25 @@ public class ItemUtil {
         }
     }
 
+    public ItemUtil setAmount(int count) {
+        amount = count;
+        return this;
+    }
+
     public ItemStack buildItem() {
-        final ItemStack itemstack = new ItemStack(this.material);
+        ItemStack itemstack = null;
+        if(item != null) {
+            itemstack = item;
+        } else {
+            itemstack = new ItemStack(this.material);
+        }
         final ItemMeta itemMeta = itemstack.getItemMeta();
         itemMeta.setDisplayName(this.displayname);
         if (this.lore != null) {
             itemMeta.setLore((List)this.lore);
         }
         itemstack.setItemMeta(itemMeta);
+        itemstack.setAmount(amount);
         return itemstack;
     }
 
@@ -45,17 +70,7 @@ public class ItemUtil {
             skullMeta.setLore((List)this.lore);
         }
         itemstack.setItemMeta((ItemMeta)skullMeta);
-        return itemstack;
-    }
-
-    public ItemStack buildItemWithShort(final int id) {
-        final ItemStack itemstack = new ItemStack(this.material, 1, (short)id);
-        final ItemMeta itemMeta = itemstack.getItemMeta();
-        itemMeta.setDisplayName(this.displayname);
-        if (this.lore != null) {
-            itemMeta.setLore((List)this.lore);
-        }
-        itemstack.setItemMeta(itemMeta);
+        itemstack.setAmount(amount);
         return itemstack;
     }
 }

@@ -1,6 +1,7 @@
 package me.refluxo.api.utils.events;
 
 import me.refluxo.api.utils.pets.PetManager;
+import me.refluxo.api.utils.pets.pet.Pet;
 import me.refluxo.api.utils.player.APIPlayer;
 import me.refluxo.api.utils.player.Share;
 import me.refluxo.api.utils.server.SettingsManager;
@@ -26,6 +27,10 @@ public class Join implements Listener {
         EMSApi.test(e.getPlayer());
         PetManager.check(e.getPlayer());
         new SettingsManager().getSettingValue(bp, Settings.AllowMessages);
+        Pet pet = new Pet(e.getPlayer());
+        if(pet.petIsActive()) {
+            pet.spawnPet();
+        }
     }
 
 }

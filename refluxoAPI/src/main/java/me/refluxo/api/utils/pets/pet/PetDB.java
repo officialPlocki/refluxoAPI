@@ -6,7 +6,9 @@ import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class PetDB {
 
@@ -21,6 +23,14 @@ public class PetDB {
                 }
             }
         }, 20, 30);
+    }
+
+    public static List<Integer> getPetIDs() {
+        List<Integer> ints = new ArrayList<>();
+        for(Entity e : pets.values()) {
+            ints.add(e.getEntityId());
+        }
+        return ints;
     }
 
     public static void addPet(Player p, Entity pet) {

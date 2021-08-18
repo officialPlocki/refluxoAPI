@@ -64,6 +64,9 @@ public class Pet {
     }
 
     public Entity spawnPet() {
+        if(!petIsActive()) {
+            setPetActive(ActiveTypes.TRUE);
+        }
         if(PetDB.getPetEntityID(p) != -1) {
             return pet;
         }
@@ -176,6 +179,9 @@ public class Pet {
         if(pet.getEntityId() != -1) {
             pet.remove();
             PetDB.removePet(p);
+            if(petIsActive()) {
+                setPetActive(ActiveTypes.FALSE);
+            }
         }
     }
 
@@ -218,7 +224,9 @@ public class Pet {
         switch (enabled) {
             case TRUE:
                 checkFirmity();
-                spawnPet();
+                if(pet.isDead() || pet == null) {
+                    spawnPet();
+                }
                 break;
             case FALSE:
                 deSpawnPet();

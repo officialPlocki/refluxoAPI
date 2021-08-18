@@ -36,10 +36,10 @@ public class SettingsYaml {
 
     public static void setSettingToValue(APIPlayer apiPlayer, Settings setting, Values value) {
         Player p = apiPlayer.getPlayer();
-        setYamlString(p.getUniqueId().toString()+"."+setting.toString(), value);
+        setYamlString(p.getUniqueId().toString()+"."+setting.name(), value);
     }
 
     public static Values getSettingValue(APIPlayer apiPlayer, Settings setting) {
-        return getYamlValue(apiPlayer, apiPlayer.getPlayer().getUniqueId().toString()+"."+setting.toString());
+        return getYamlValue(apiPlayer, apiPlayer.getPlayer().getUniqueId().toString()+"."+setting.name());
     }
 }

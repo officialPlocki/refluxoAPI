@@ -20,7 +20,7 @@ public class SettingsMySQL {
     public static void setSettingToValue(APIPlayer apiPlayer, Settings setting, Values value) {
         Player p = apiPlayer.getPlayer();
         try {
-            PreparedStatement ps = con.prepareStatement("UPDATE settings SET " + setting.toString() + " TO `" + value.toString() + "` WHERE uuid = ?");
+            PreparedStatement ps = con.prepareStatement("UPDATE settings SET " + setting.name() + " TO `" + value.toString() + "` WHERE uuid = ?");
             ps.setString(1, p.getUniqueId().toString());
             service.executeUpdate(ps);
         } catch (SQLException e) {
@@ -31,11 +31,11 @@ public class SettingsMySQL {
     public static Values getSettingValue(APIPlayer apiPlayer, Settings setting) {
         Player p = apiPlayer.getPlayer();
         try {
-            PreparedStatement ps = con.prepareStatement("SELECT " + setting.toString() + " FROM settings WHERE uuid = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT " + setting.name() + " FROM settings WHERE uuid = ?");
             ps.setString(1, p.getUniqueId().toString());
             ResultSet rs = service.getResult(ps);
             if(rs.next()) {
-                return Values.valueOf(rs.getString(setting.toString()));
+                return Values.valueOf(rs.getString(setting.name()));
             } else {
                 check(apiPlayer);
                 return getSettingValue(apiPlayer, setting);

@@ -10,6 +10,9 @@ import me.refluxo.api.utils.events.Join;
 import me.refluxo.api.utils.events.Quit;
 import me.refluxo.api.utils.files.FileBuilder;
 import me.refluxo.api.utils.mysql.MySQLService;
+import me.refluxo.api.utils.pets.PetManager;
+import me.refluxo.api.utils.pets.PetMovement;
+import me.refluxo.api.utils.pets.pet.PetDB;
 import me.refluxo.api.utils.player.APIPlayer;
 import me.refluxo.api.utils.player.Command;
 import me.refluxo.api.utils.player.Language;
@@ -84,6 +87,12 @@ public class RefluxoAPI extends JavaPlugin {
         }
         try {
             PreparedStatement ps = service.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS settings(uuid varchar(36), ChatAds TEXT, InventoryAnimations TEXT, Notifications TEXT, Particles TEXT, Sound TEXT, AllowFriendRequests TEXT, AllowMessagesFromEveryone TEXT, AllowMessages TEXT)");
+            service.executeUpdate(ps);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            PreparedStatement ps = service.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS pets(uuid varchar(36), pet TEXT, petType TEXT, active TEXT)");
             service.executeUpdate(ps);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -172,6 +181,8 @@ public class RefluxoAPI extends JavaPlugin {
         }
         autoBroadcast();
         EMSApi.generate();
+        PetDB.init();
+        PetMovement.init();
     }
 
     @Override

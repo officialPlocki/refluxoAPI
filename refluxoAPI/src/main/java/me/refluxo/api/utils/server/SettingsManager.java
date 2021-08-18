@@ -17,16 +17,11 @@ public class SettingsManager {
         Values value = null;
         switch (setting) {
             case AllowFriendRequests:
-                switch (getSettingValue(apiPlayer, setting)) {
-                    case YES:
-                        setSetting(apiPlayer, setting, Values.NO);
-                        break;
-                    case NO:
-                        setSetting(apiPlayer, setting, Values.YES);
-                        break;
-                }
-                break;
             case Sound:
+            case InventoryAnimations:
+            case AllowMessages:
+            case AutomaticTeleportToSpawnOnJoin:
+            case NavigatorInHotbar:
                 switch (getSettingValue(apiPlayer, setting)) {
                     case YES:
                         setSetting(apiPlayer, setting, Values.NO);
@@ -65,16 +60,6 @@ public class SettingsManager {
                         break;
                 }
                 break;
-            case InventoryAnimations:
-                switch (getSettingValue(apiPlayer, setting)) {
-                    case YES:
-                        setSetting(apiPlayer, setting, Values.NO);
-                        break;
-                    case NO:
-                        setSetting(apiPlayer, setting, Values.YES);
-                        break;
-                }
-                break;
             case ChatAds:
                 switch (getSettingValue(apiPlayer, setting)) {
                     case EVERY:
@@ -101,36 +86,6 @@ public class SettingsManager {
                         break;
                 }
                 break;
-            case AllowMessages:
-                switch (getSettingValue(apiPlayer, setting)) {
-                    case YES:
-                        setSetting(apiPlayer, setting, Values.NO);
-                        break;
-                    case NO:
-                        setSetting(apiPlayer, setting, Values.YES);
-                        break;
-                }
-                break;
-            case NavigatorInHotbar:
-                switch (getSettingValue(apiPlayer, setting)) {
-                    case YES:
-                        setSetting(apiPlayer, setting, Values.NO);
-                        break;
-                    case NO:
-                        setSetting(apiPlayer, setting, Values.YES);
-                        break;
-                }
-                break;
-            case AutomaticTeleportToSpawnOnJoin:
-                switch (getSettingValue(apiPlayer, setting)) {
-                    case YES:
-                        setSetting(apiPlayer, setting, Values.NO);
-                        break;
-                    case NO:
-                        setSetting(apiPlayer, setting, Values.YES);
-                        break;
-                }
-                break;
         }
     }
 
@@ -139,16 +94,10 @@ public class SettingsManager {
 
         switch (setting) {
             case AllowFriendRequests:
-                switch (getSettingValue(apiPlayer, setting)) {
-                    case YES:
-                        msg = "§aAktiviert";
-                        break;
-                    case NO:
-                        msg = "§cDeaktiviert";
-                        break;
-                }
-                break;
             case Sound:
+            case InventoryAnimations:
+            case AllowMessages:
+            case AutomaticTeleportToSpawnOnJoin:
                 switch (getSettingValue(apiPlayer, setting)) {
                     case YES:
                         msg = "§aAktiviert";
@@ -187,16 +136,6 @@ public class SettingsManager {
                         break;
                 }
                 break;
-            case InventoryAnimations:
-                switch (getSettingValue(apiPlayer, setting)) {
-                    case YES:
-                        msg = "§aAktiviert";
-                        break;
-                    case NO:
-                        msg = "§cDeaktiviert";
-                        break;
-                }
-                break;
             case ChatAds:
                 switch (getSettingValue(apiPlayer, setting)) {
                     case EVERY:
@@ -223,16 +162,6 @@ public class SettingsManager {
                         break;
                 }
                 break;
-            case AllowMessages:
-                switch (getSettingValue(apiPlayer, setting)) {
-                    case YES:
-                        msg = "§aAktiviert";
-                        break;
-                    case NO:
-                        msg = "§cDeaktiviert";
-                        break;
-                }
-                break;
             case NavigatorInHotbar:
                 switch (getSettingValue(apiPlayer, setting)) {
                     case YES:
@@ -240,16 +169,6 @@ public class SettingsManager {
                         break;
                     case NO:
                         msg = "§cBefehle im Chat";
-                        break;
-                }
-                break;
-            case AutomaticTeleportToSpawnOnJoin:
-                switch (getSettingValue(apiPlayer, setting)) {
-                    case YES:
-                        msg = "§aAktiviert";
-                        break;
-                    case NO:
-                        msg = "§cDeaktiviert";
                         break;
                 }
                 break;
@@ -324,34 +243,20 @@ public class SettingsManager {
             Values v = null;
             switch (s) {
                 case AllowFriendRequests:
-                    v = Values.YES;
-                    break;
+                case NavigatorInHotbar:
+                case AllowMessages:
+                case AutomaticTeleportToSpawnOnJoin:
+                case InventoryAnimations:
                 case Sound:
                     v = Values.YES;
                     break;
                 case Particles:
-                    v = Values.EVERY;
-                    break;
-                case Notifications:
-                    v = Values.EVERY;
-                    break;
-                case InventoryAnimations:
-                    v = Values.YES;
-                    break;
                 case ChatAds:
+                case Notifications:
                     v = Values.EVERY;
                     break;
                 case AllowMessagesFromEveryone:
                     v = Values.Everyone;
-                    break;
-                case AllowMessages:
-                    v = Values.YES;
-                    break;
-                case NavigatorInHotbar:
-                    v = Values.YES;
-                    break;
-                case AutomaticTeleportToSpawnOnJoin:
-                    v = Values.YES;
                     break;
             }
             m.setSetting(apiPlayer, s, v);

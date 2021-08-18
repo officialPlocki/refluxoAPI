@@ -26,6 +26,10 @@ public class InventoryBuilder {
 
     public InventoryBuilder addItemToInventory(ItemStack item) {
         int i = items.length;
+        if(items == null) {
+            items[0] = item;
+            return this;
+        }
         items[i++] = item;
         return this;
     }

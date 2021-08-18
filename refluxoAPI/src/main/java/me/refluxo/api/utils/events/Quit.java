@@ -1,5 +1,6 @@
 package me.refluxo.api.utils.events;
 
+import me.refluxo.api.utils.pets.pet.Pet;
 import me.refluxo.api.utils.player.APIPlayer;
 import me.refluxo.api.utils.player.Share;
 import org.bukkit.event.EventHandler;
@@ -15,6 +16,8 @@ public class Quit implements Listener {
         if(Share.enabled) {
             bp.getPlayerShare().saveAll();
         }
+        Pet pet = new Pet(e.getPlayer());
+        pet.deSpawnPet();
     }
 
 }

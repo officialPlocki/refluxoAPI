@@ -21,6 +21,8 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 
+import static me.refluxo.api.utils.server.settings.enums.Values.EVERY;
+
 public class SettingsCommand extends Language implements CommandExecutor, Listener {
 
     @Override
@@ -76,9 +78,86 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
             SettingsManager settingsManager = new SettingsManager();
             builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
             builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            switch (settingsManager.getSettingValue( apiPlayer, Settings.ChatAds)) {
+                case EVERY:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.ChatAds), Material.PAPER, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds)+"\n").setEnchanted(true).buildItem());
+                    break;
+                case SERVER:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.ChatAds), Material.PAPER, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds)+"\n").setEnchanted(true).buildItem());
+                    break;
+                case PLAYERS:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.ChatAds), Material.PAPER, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds)+"\n").setEnchanted(true).buildItem());
+                    break;
+                case NONE:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.ChatAds), Material.PAPER, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds)+"\n").buildItem());
+                    break;
+            }
 
+            switch (settingsManager.getSettingValue( apiPlayer, Settings.InventoryAnimations)) {
+                case YES:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.InventoryAnimations), Material.CHEST, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds)+"\n").setEnchanted(true).buildItem());
+                    break;
+                case NO:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.InventoryAnimations), Material.CHEST, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds)+"\n").buildItem());
+                    break;
+            }
 
+            switch (settingsManager.getSettingValue( apiPlayer, Settings.Notifications)) {
+                case EVERY:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Notifications), Material.ENDER_EYE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").setEnchanted(true).buildItem());
+                    break;
+                case SERVER:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Notifications), Material.ENDER_EYE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").setEnchanted(true).buildItem());
+                    break;
+                case ANNOUNCEMENTS:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Notifications), Material.ENDER_EYE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").setEnchanted(true).buildItem());
+                    break;
+                case NONE:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Notifications), Material.ENDER_PEARL, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").buildItem());
+                    break;
+            }
 
+                switch (settingsManager.getSettingValue( apiPlayer, Settings.Particles)) {
+                    case EVERY:
+                        builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Particles), Material.EXPERIENCE_BOTTLE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").setEnchanted(true).buildItem());
+                        break;
+                    case LESS:
+                        builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Particles), Material.EXPERIENCE_BOTTLE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").setEnchanted(true).buildItem());
+                        break;
+                    case NONE:
+                        builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Particles), Material.EXPERIENCE_BOTTLE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").buildItem());
+                        break;
+                }
+
+            switch (settingsManager.getSettingValue( apiPlayer, Settings.Sound)) {
+                case YES:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Sound), Material.MUSIC_DISC_13, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds)+"\n").setEnchanted(true).buildItem());
+                    break;
+                case NO:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Sound), Material.MUSIC_DISC_13, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds)+"\n").buildItem());
+                    break;
+            }
+
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§cZurück!", Material.DARK_OAK_DOOR, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
             return builder.buildInventory();
         } else if(type == SettingsInventoryTypes.LOCAL) {
             InventoryBuilder builder = new InventoryBuilder("§b§lRe§f§lfluxo§c§lSettings", InventoryType.HOPPER);
@@ -106,6 +185,16 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
                             p.openInventory(getInventory(new APIPlayer(p), SettingsInventoryTypes.GLOBAL));
                         }, 8);
                         break;
+                    case "§cZurück!":
+                        p.closeInventory();
+                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                            p.openInventory(getInventory(new APIPlayer(p), SettingsInventoryTypes.MAIN));
+                        }, 8);
+                    case "§6§lLokale Einstellungen":
+                        p.closeInventory();
+                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                            p.openInventory(getInventory(new APIPlayer(p), SettingsInventoryTypes.LOCAL));
+                        }, 8);
                 }
             }
         }

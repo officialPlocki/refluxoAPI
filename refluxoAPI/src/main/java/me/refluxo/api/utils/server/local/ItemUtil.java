@@ -1,6 +1,8 @@
 package me.refluxo.api.utils.server.local;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -61,6 +63,10 @@ public class ItemUtil {
         itemMeta.setDisplayName(this.displayname);
         if (this.lore != null) {
             itemMeta.setLore((List)this.lore);
+        }
+        if(enchanted) {
+            itemMeta.addEnchant(Enchantment.DURABILITY,0,true);
+            itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
         itemstack.setItemMeta(itemMeta);
         itemstack.setAmount(amount);

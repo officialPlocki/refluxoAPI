@@ -8,6 +8,7 @@ import me.refluxo.api.utils.server.SettingsManager;
 import me.refluxo.api.utils.server.local.ItemUtil;
 import me.refluxo.api.utils.server.settings.enums.Settings;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -46,8 +47,8 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
         }
         Inventory gsettings = builder.addItemToInventory(new ItemUtil("", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                 .addItemToInventory(new ItemUtil("", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
-                .addItemToInventory(new ItemUtil("", ChatADs, "&7Status:"+settingsManager.getSettingStatusMessage(apiPlayer )).buildItem())
-                .addItemToInventory()
+                .addItemToInventory(new ItemUtil("§eAktivieren", ChatADs, "§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds)).buildItem())
+                .addItemToInventory(new ItemUtil("§eAktivieren", ChatADs, "§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds)).buildItem())
                 .addItemToInventory()
                 .addItemToInventory()
                 .addItemToInventory()

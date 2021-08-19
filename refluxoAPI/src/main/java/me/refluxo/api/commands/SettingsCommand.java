@@ -49,12 +49,12 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
             switch (settingsManager.getSettingValue(apiPlayer, Settings.NavigatorInHotbar)) {
                 case YES:
                     builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
-                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.NavigatorInHotbar), Material.LIME_STAINED_GLASS_PANE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.NavigatorInHotbar) + "\n").buildItem());
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.NavigatorInHotbar), Material.COMPASS, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.NavigatorInHotbar) + "\n").setEnchanted(true).buildItem());
                     builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
                     break;
                 case NO:
                     builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
-                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.NavigatorInHotbar), Material.LIME_STAINED_GLASS_PANE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.NavigatorInHotbar) + "\n").buildItem());
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.NavigatorInHotbar), Material.COMPASS, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.NavigatorInHotbar) + "\n").buildItem());
                     builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
                     break;
             }

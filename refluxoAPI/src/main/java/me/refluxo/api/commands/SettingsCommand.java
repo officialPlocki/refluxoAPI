@@ -31,9 +31,16 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
         settingsManager.toggleSetting(apiPlayer, Settings.ChatAds);
         InventoryBuilder builder = new InventoryBuilder("", 3*9);
         ItemStack ChatADs = null;
+        String ChatADsName = null;
+        String ChatADsDes = null;
+        ItemStack InvAni = null;
+        String InvAniName = null;
+        String InvAniDes = null;
         switch (settingsManager.getSettingValue(apiPlayer, Settings.ChatAds)) {
             case EVERY:
                 ChatADs = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
+                ChatADsName = "Alle ChatAds";
+                ChatADsDes = "§e§lAlle ChatADs\n§2Nur ChatADs vom Server\nNur ChatADs von Spielern\nkeine ChatADs"
                 break;
             case SERVER:
                 ChatADs = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);
@@ -43,20 +50,24 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
                 break;
             case NONE:
                 ChatADs = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+                ChatADsName = "§eAktivieren!";
                 break;
         }
+
+        switch (settingsManager.getSettingValue(apiPlayer, Settings.InventoryAnimations)) {
+            case YES:
+                InvAni = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
+                break;
+            case NO:
+                InvAni = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+                break;
+        }
+
         Inventory gsettings = builder.addItemToInventory(new ItemUtil("", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                 .addItemToInventory(new ItemUtil("", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
-                .addItemToInventory(new ItemUtil("§eAktivieren", ChatADs, "§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds)).buildItem())
-                .addItemToInventory(new ItemUtil("§eAktivieren", ChatADs, "§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds)).buildItem())
+                .addItemToInventory(new ItemUtil(ChatADsName, ChatADs, ChatADsDes).buildItem())
+                .addItemToInventory(new ItemUtil(, InvAni, "§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.InventoryAnimations)).buildItem())
                 .addItemToInventory()
-                .addItemToInventory()
-                .addItemToInventory()
-                .addItemToInventory()
-                .addItemToInventory()
-                .addItemToInventory()
-
-
         return false;
     }
 

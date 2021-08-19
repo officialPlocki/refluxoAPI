@@ -14,6 +14,7 @@ public class ItemUtil {
     private List<String> lore;
     private ItemStack item;
     private int amount = 1;
+    boolean enchanted = false;
 
     public ItemUtil(final String displayname, ItemStack item, final String lore) {
         this.lore = new ArrayList<String>();
@@ -41,6 +42,11 @@ public class ItemUtil {
 
     public ItemUtil setAmount(int count) {
         amount = count;
+        return this;
+    }
+
+    public ItemUtil setEnchanted(boolean enabled) {
+        enchanted = enabled;
         return this;
     }
 

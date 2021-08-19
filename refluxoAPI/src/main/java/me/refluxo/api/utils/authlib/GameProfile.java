@@ -1,16 +1,15 @@
 package me.refluxo.api.utils.authlib;
 
-import java.util.UUID;
-
 import me.refluxo.api.utils.authlib.properties.PropertyMap;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.util.UUID;
 
 public class GameProfile {
 	private final UUID id;
 	private final String name;
 	private final PropertyMap properties = new PropertyMap();
-	private boolean legacy;
 
 	public GameProfile(UUID id, String name) {
 		if ((id == null) && (StringUtils.isBlank(name)))
@@ -21,20 +20,12 @@ public class GameProfile {
 		this.name = name;
 	}
 
-	public UUID getId() {
-		return this.id;
-	}
-
 	public String getName() {
 		return this.name;
 	}
 
 	public PropertyMap getProperties() {
 		return this.properties;
-	}
-
-	public boolean isComplete() {
-		return ((this.id != null) && (StringUtils.isNotBlank(getName())));
 	}
 
 	public boolean equals(Object o) {
@@ -46,27 +37,15 @@ public class GameProfile {
 		GameProfile that = (GameProfile) o;
 
 		if(this.id != null && this.name != null) {
-			if(this.id.equals(that.id) && this.name.equals(that.name)) {
-				return true;
-			} else {
-				return false;
-			}
+			return this.id.equals(that.id) && this.name.equals(that.name);
 		}
 
 		if(this.id != null) {
-			if(this.id.equals(that.id)) {
-				return true;
-			} else {
-				return false;
-			}
+			return this.id.equals(that.id);
 		}
 
 		if(this.name != null) {
-			if(this.name.equals(that.name)) {
-				return true;
-			} else {
-				return false;
-			}
+			return this.name.equals(that.name);
 		}
 
 		return false;
@@ -82,10 +61,7 @@ public class GameProfile {
 		return new ToStringBuilder(this).append("id", this.id)
 				.append("name", this.name)
 				.append("properties", this.properties)
-				.append("legacy", this.legacy).toString();
+				.append("legacy", false).toString();
 	}
 
-	public boolean isLegacy() {
-		return this.legacy;
-	}
 }

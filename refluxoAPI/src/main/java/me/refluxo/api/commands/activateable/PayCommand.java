@@ -7,11 +7,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class PayCommand implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
             if (args.length == 0) {
@@ -24,15 +25,15 @@ public class PayCommand implements CommandExecutor {
             }
             if (args.length == 2) {
                 if (args[0].equalsIgnoreCase("*")) {
-                    if(Double.valueOf(args[1]) <= 500) {
+                    if(Double.parseDouble(args[1]) <= 500) {
                         p.sendMessage("Du musst mindestens 500 Coins an jeden Spieler überweisen.");
                         return false;
                     }
                     if (CoinsAPI.getCoins(p) == Bukkit.getOnlinePlayers().size() * Double.valueOf(args[1]).intValue() || CoinsAPI.getCoins(p) >= Bukkit.getOnlinePlayers().size() * Double.valueOf(args[1]).intValue()) {
                         p.sendMessage(Language.apiprefix + "Du hast erfolgreich §e" + args[1] + " Coins §7an alle Spieler gegeben!");
-                        CoinsAPI.removeCoins(p, Double.valueOf(Bukkit.getOnlinePlayers().size() * Double.valueOf(args[1]).intValue()));
+                        CoinsAPI.removeCoins(p, (double) (Bukkit.getOnlinePlayers().size() * Double.valueOf(args[1]).intValue()));
                         for (Player all : Bukkit.getOnlinePlayers()) {
-                            CoinsAPI.addCoins(all, Double.valueOf(args[1]));
+                            CoinsAPI.addCoins(all, Double.parseDouble(args[1]));
                             all.sendMessage(Language.apiprefix+ "Du hast von §b" + p.getName() + " §e" + args[1] + " Coins §7erhalten!");
                         }
                         return true;
@@ -41,7 +42,7 @@ public class PayCommand implements CommandExecutor {
                     return false;
                 }
 
-                if(Double.valueOf(args[1]) <= 0.5) {
+                if(Double.parseDouble(args[1]) <= 0.5) {
                     p.sendMessage("Du musst mindestens 0,50 Coins überweisen.");
                     return false;
                 }
@@ -63,11 +64,11 @@ public class PayCommand implements CommandExecutor {
                     return false;
                 }
                 if (target.isOnline()) {
-                    if (CoinsAPI.getCoins(p) == Double.valueOf(args[1]) || CoinsAPI.getCoins(p) >= Double.valueOf(args[1]).intValue()) {
+                    if (CoinsAPI.getCoins(p) == Double.parseDouble(args[1]) || CoinsAPI.getCoins(p) >= Double.valueOf(args[1]).intValue()) {
                         p.sendMessage(Language.apiprefix+ "Du hast erfolgreich §e" + args[1] + " Coins§7 an §b" + args[0] + " §7gezahlt!");
                         target.sendMessage(Language.apiprefix+ "Du hast von §b" + p.getName() + " §e" + args[1] + " Coins §7erhalten!");
-                        CoinsAPI.removeCoins(p, Double.valueOf(args[1]));
-                        CoinsAPI.addCoins(target, Double.valueOf(args[1]));
+                        CoinsAPI.removeCoins(p, Double.parseDouble(args[1]));
+                        CoinsAPI.addCoins(target, Double.parseDouble(args[1]));
                         return true;
                     }
                     p.sendMessage(Language.apiprefix+"Du hast nicht genügend Geld!");

@@ -16,14 +16,15 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EMSCommand extends Language implements CommandExecutor, Listener {
-
+    @Deprecated
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, String[] strings) {
         Inventory inv = Bukkit.createInventory(null, 5*9, "§b§lRe§f§lfluxo§e§lEMS");
         ItemStack glass = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
         ItemMeta glassMeta = glass.getItemMeta();
@@ -65,7 +66,7 @@ public class EMSCommand extends Language implements CommandExecutor, Listener {
         apiPlayer.getPlayer().openInventory(inv);
         return false;
     }
-
+    @Deprecated
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         APIPlayer apiPlayer = new APIPlayer((Player) e.getWhoClicked());
@@ -185,7 +186,7 @@ public class EMSCommand extends Language implements CommandExecutor, Listener {
                         if(ems.getLevel()==5) {
                             invnew.setItem(24, blocked);
                         }
-                        ((Player) e.getWhoClicked()).openInventory(invnew);
+                        e.getWhoClicked().openInventory(invnew);
                     }, 8);
                 }
             }

@@ -8,11 +8,9 @@ import me.refluxo.api.utils.pets.PetTypes;
 import me.refluxo.api.utils.pets.pet.Pet;
 import me.refluxo.api.utils.pets.pet.PetDB;
 import me.refluxo.api.utils.pets.pet.Types;
-import me.refluxo.api.utils.player.APIPlayer;
 import me.refluxo.api.utils.player.Language;
 import me.refluxo.api.utils.server.local.ItemUtil;
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -29,9 +27,8 @@ import org.jetbrains.annotations.NotNull;
 public class PetCommand extends Language implements CommandExecutor, Listener {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, String[] strings) {
         Player p = (Player) commandSender;
-        APIPlayer apiPlayer = new APIPlayer(p);
         Pet pet = new Pet(p);
         if(pet.petIsActive()) {
             p.openInventory(getInventory(PetInventoryTypes.PET_SETTINGS_AND_DESPAWN));
@@ -64,7 +61,7 @@ public class PetCommand extends Language implements CommandExecutor, Listener {
             e.setCancelled(true);
         }
     }
-
+    @Deprecated
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         if(e.getCurrentItem() != null) {
@@ -72,58 +69,43 @@ public class PetCommand extends Language implements CommandExecutor, Listener {
                 e.setCancelled(true);
                 String name = e.getCurrentItem().getDisplayName();
                 Player p = (Player) e.getWhoClicked();
-                APIPlayer apiPlayer = new APIPlayer(p);
                 Pet pet = new Pet(p);
                 switch (name) {
                     //PET CHOOSE
                     case "§eKatze":
                         pet.setPet(PetTypes.CAT);
                         p.closeInventory();
-                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                            p.openInventory(getInventory(PetInventoryTypes.PET_TYPE_SELECT_CAT));
-                        }, 8);
+                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> p.openInventory(getInventory(PetInventoryTypes.PET_TYPE_SELECT_CAT)), 8);
                         break;
                     case "§7Stein":
                         pet.setPet(PetTypes.STONE);
                         p.closeInventory();
-                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                            p.openInventory(getInventory(PetInventoryTypes.CONFIRM));
-                        }, 8);
+                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> p.openInventory(getInventory(PetInventoryTypes.CONFIRM)), 8);
                         break;
                     case "§aAxolotl":
                         pet.setPet(PetTypes.AXOLOTL);
                         p.closeInventory();
-                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                            p.openInventory(getInventory(PetInventoryTypes.PET_TYPE_SELECT_AXOLOTL));
-                        }, 8);
+                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> p.openInventory(getInventory(PetInventoryTypes.PET_TYPE_SELECT_AXOLOTL)), 8);
                         break;
                     case "§2Schildkröte":
                         pet.setPet(PetTypes.TURTLE);
                         p.closeInventory();
-                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                            p.openInventory(getInventory(PetInventoryTypes.CONFIRM));
-                        }, 8);
+                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> p.openInventory(getInventory(PetInventoryTypes.CONFIRM)), 8);
                         break;
                     case "§6Gorilla":
                         pet.setPet(PetTypes.GORILLA);
                         p.closeInventory();
-                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                            p.openInventory(getInventory(PetInventoryTypes.CONFIRM));
-                        }, 8);
+                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> p.openInventory(getInventory(PetInventoryTypes.CONFIRM)), 8);
                         break;
                     case "§bBaby Yoda":
                         pet.setPet(PetTypes.BABY_YODA);
                         p.closeInventory();
-                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                            p.openInventory(getInventory(PetInventoryTypes.CONFIRM));
-                        }, 8);
+                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> p.openInventory(getInventory(PetInventoryTypes.CONFIRM)), 8);
                         break;
                     case "§dElefant":
                         pet.setPet(PetTypes.ELEPHANT);
                         p.closeInventory();
-                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                            p.openInventory(getInventory(PetInventoryTypes.PET_TYPE_SELECT_ELEPHANT));
-                        }, 8);
+                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> p.openInventory(getInventory(PetInventoryTypes.PET_TYPE_SELECT_ELEPHANT)), 8);
                         break;
                         //CONFIRM
                     case "§aSpawn":
@@ -141,21 +123,15 @@ public class PetCommand extends Language implements CommandExecutor, Listener {
                                 break;
                             case CAT:
                                 p.closeInventory();
-                                Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                                    p.openInventory(getInventory(PetInventoryTypes.PET_TYPE_SELECT_CAT));
-                                }, 8);
+                                Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> p.openInventory(getInventory(PetInventoryTypes.PET_TYPE_SELECT_CAT)), 8);
                                 break;
                             case AXOLOTL:
                                 p.closeInventory();
-                                Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                                    p.openInventory(getInventory(PetInventoryTypes.PET_TYPE_SELECT_AXOLOTL));
-                                }, 8);
+                                Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> p.openInventory(getInventory(PetInventoryTypes.PET_TYPE_SELECT_AXOLOTL)), 8);
                                 break;
                             case ELEPHANT:
                                 p.closeInventory();
-                                Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                                    p.openInventory(getInventory(PetInventoryTypes.PET_TYPE_SELECT_ELEPHANT));
-                                }, 8);
+                                Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> p.openInventory(getInventory(PetInventoryTypes.PET_TYPE_SELECT_ELEPHANT)), 8);
                                 break;
                         }
                         break;
@@ -220,7 +196,7 @@ public class PetCommand extends Language implements CommandExecutor, Listener {
         switch (invType) {
             case PET_CHOOSE:
                 InventoryBuilder builder = new InventoryBuilder("§b§lRe§f§lfluxo§a§lPets", 3*9);
-                Inventory inv = builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
+                return builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
@@ -247,10 +223,9 @@ public class PetCommand extends Language implements CommandExecutor, Listener {
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem()).buildInventory();
-                return inv;
             case CONFIRM:
                 InventoryBuilder builder2 = new InventoryBuilder("§b§lRe§f§lfluxo§a§lPets", 3*9);
-                Inventory inv2 = builder2.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
+                return builder2.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
@@ -277,10 +252,9 @@ public class PetCommand extends Language implements CommandExecutor, Listener {
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem()).buildInventory();
-                return inv2;
             case PET_SETTINGS_AND_DESPAWN:
                 InventoryBuilder builder3 = new InventoryBuilder("§b§lRe§f§lfluxo§a§lPets", 3*9);
-                Inventory inv3 = builder3.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
+                return builder3.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
@@ -307,10 +281,9 @@ public class PetCommand extends Language implements CommandExecutor, Listener {
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem()).buildInventory();
-                return inv3;
             case PET_TYPE_SELECT_AXOLOTL:
                 InventoryBuilder builder4 = new InventoryBuilder("§b§lRe§f§lfluxo§a§lPets", 3*9);
-                Inventory inv4 = builder4.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
+                return builder4.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
@@ -337,10 +310,9 @@ public class PetCommand extends Language implements CommandExecutor, Listener {
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem()).buildInventory();
-                return inv4;
             case PET_TYPE_SELECT_CAT:
                 InventoryBuilder builder5 = new InventoryBuilder("§b§lRe§f§lfluxo§a§lPets", 3*9);
-                Inventory inv5 = builder5.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
+                return builder5.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
@@ -367,10 +339,9 @@ public class PetCommand extends Language implements CommandExecutor, Listener {
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem()).buildInventory();
-                return inv5;
             case PET_TYPE_SELECT_ELEPHANT:
                 InventoryBuilder builder6 = new InventoryBuilder("§b§lRe§f§lfluxo§a§lPets", 3*9);
-                Inventory inv6 = builder6.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
+                return builder6.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
@@ -397,7 +368,6 @@ public class PetCommand extends Language implements CommandExecutor, Listener {
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                         .addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem()).buildInventory();
-                return inv6;
         }
         return Bukkit.createInventory(null, 3*9, "§c§lERROR");
     }

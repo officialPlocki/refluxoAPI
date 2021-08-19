@@ -40,7 +40,7 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
             case EVERY:
                 ChatADs = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
                 ChatADsName = "Alle ChatAds";
-                ChatADsDes = "§e§lAlle ChatADs\n§2Nur ChatADs vom Server\nNur ChatADs von Spielern\nkeine ChatADs"
+                ChatADsDes = "\n§e§lAlle ChatADs\n§2Nur ChatADs vom Server\nNur ChatADs von Spielern\nkeine ChatADs\n§bzum ändern klicken!"
                 break;
             case SERVER:
                 ChatADs = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);

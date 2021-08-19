@@ -191,7 +191,7 @@ public class SettingsManager {
 
         switch (setting) {
             case AllowFriendRequests:
-                name = "Anfragen";
+                name = "Anfragen erlauben";
                 break;
             case AllowMessages:
                 name = "Direktnachrichten erlauben";

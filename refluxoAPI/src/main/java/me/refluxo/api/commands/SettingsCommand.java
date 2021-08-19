@@ -165,10 +165,10 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
             builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
             switch (settingsManager.getSettingValue(apiPlayer, Settings.NavigatorInHotbar)) {
                 case YES:
-                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.NavigatorInHotbar), Material.COMPASS, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.NavigatorInHotbar)"\n").setEnchanted(true).buildItem());
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.NavigatorInHotbar), Material.COMPASS, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.NavigatorInHotbar)+"\n").setEnchanted(true).buildItem());
                     break;
                 case NO:
-                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.NavigatorInHotbar), Material.COMPASS, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.NavigatorInHotbar)"\n").buildItem());
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.NavigatorInHotbar), Material.COMPASS, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.NavigatorInHotbar)+"\n").buildItem());
                     break;
             }
 
@@ -184,6 +184,10 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
                     break;
             }
 
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§cZurück!", Material.DARK_OAK_DOOR, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
             return builder.buildInventory();
         } else {
             return Bukkit.createInventory(null, 3*9, "§c§lERROR");
@@ -195,9 +199,9 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
         if(e.getCurrentItem() != null) {
             if(e.getView().getTitle().equalsIgnoreCase("§b§lRe§f§lfluxo§c§lSettings")) {
                 e.setCancelled(true);
-                String name = e.getCurrentItem().getI18NDisplayName();
+                String Dname = e.getCurrentItem().getI18NDisplayName();
                 Player p = (Player) e.getWhoClicked();
-                switch (name) {
+                switch (Dname) {
                     case "§a§lGlobale Einstellungen":
                         p.closeInventory();
                         Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
@@ -210,6 +214,11 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
                             p.openInventory(getInventory(new APIPlayer(p), SettingsInventoryTypes.MAIN));
                         }, 8);
                     case "§6§lLokale Einstellungen":
+                        p.closeInventory();
+                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                            p.openInventory(getInventory(new APIPlayer(p), SettingsInventoryTypes.LOCAL));
+                        }, 8);
+                    case "§":
                         p.closeInventory();
                         Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
                             p.openInventory(getInventory(new APIPlayer(p), SettingsInventoryTypes.LOCAL));

@@ -74,6 +74,8 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
         } else if(type ==SettingsInventoryTypes.GLOBAL) {
             InventoryBuilder builder = new InventoryBuilder("§b§lRe§f§lfluxo§c§lSettings", 3*9);
             SettingsManager settingsManager = new SettingsManager();
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
 
 
 

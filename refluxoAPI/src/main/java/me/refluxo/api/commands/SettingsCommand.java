@@ -78,7 +78,7 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
 
         } else if(type == SettingsInventoryTypes.LOCAL) {
             InventoryBuilder builder = new InventoryBuilder("§b§lRe§f§lfluxo§c§lSettings", InventoryType.HOPPER);
-                    SettingsManager settingsManager = new SettingsManager();
+            SettingsManager settingsManager = new SettingsManager();
 
 
 

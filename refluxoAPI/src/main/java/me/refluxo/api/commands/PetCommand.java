@@ -67,7 +67,7 @@ public class PetCommand extends Language implements CommandExecutor, Listener {
         if(e.getCurrentItem() != null) {
             if(e.getView().getTitle().equalsIgnoreCase("§b§lRe§f§lfluxo§a§lPets")) {
                 e.setCancelled(true);
-                String name = e.getCurrentItem().getDisplayName();
+                String name = e.getCurrentItem().getI18NDisplayName();
                 Player p = (Player) e.getWhoClicked();
                 Pet pet = new Pet(p);
                 switch (name) {

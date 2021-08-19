@@ -7,21 +7,23 @@ import org.bukkit.inventory.ItemStack;
 
 public class InventoryBuilder {
 
-    private String title;
-    private int size;
-    private InventoryType type;
-    private ItemStack[] items = new ItemStack[size];
+    private final String title;
+    private final int size;
+    private final InventoryType type;
+    private final ItemStack[] items;
 
     public InventoryBuilder(String displayName, int size) {
         title = displayName;
         this.size = size;
         type = null;
+        items = new ItemStack[size];
     }
 
-    public InventoryBuilder(String displayName, int size, InventoryType type) {
+    public InventoryBuilder(String displayName, InventoryType type) {
         title = displayName;
-        this.size = size;
+        this.size = 0;
         this.type = type;
+        items = new ItemStack[InventoryType.HOPPER.getDefaultSize()];
     }
 
     public InventoryBuilder addItemToInventory(ItemStack item) {

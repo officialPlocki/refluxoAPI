@@ -56,6 +56,8 @@ public class RefluxoAPI extends JavaPlugin {
         new ListenerManager(new Quit()).registerListener();
         new ListenerManager(new EMSCommand()).registerListener();
         new ListenerManager(new Command()).registerListener();
+        new ListenerManager(new PetCommand()).registerListener();
+        new ListenerManager(new SettingsCommand()).registerListener();
         CoinsAPI.setup();
         registerEconomy();
         MySQLService service = new MySQLService();
@@ -171,7 +173,15 @@ public class RefluxoAPI extends JavaPlugin {
         getCommand("clearchat").setExecutor(new ClearChatCommand());
         getCommand("chatc").setExecutor(new ClearChatCommand());
         getCommand("chatclear").setExecutor(new ClearChatCommand());
+        getCommand("pet").setExecutor(new PetCommand());
+        getCommand("pets").setExecutor(new PetCommand());
+        getCommand("haustier").setExecutor(new PetCommand());
+        getCommand("haustiere").setExecutor(new PetCommand());
         getCommand("fly").setExecutor(new FlyCommand());
+        getCommand("setting").setExecutor(new SettingsCommand());
+        getCommand("settings").setExecutor(new SettingsCommand());
+        getCommand("einstellungen").setExecutor(new SettingsCommand());
+        getCommand("einstellung").setExecutor(new SettingsCommand());
         if(Share.enabled) {
             autoSave();
         }

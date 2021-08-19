@@ -21,6 +21,14 @@ commands:
   pay:
   zahlen:
   serverapi:
+  pet:
+  pets:
+  haustier:
+  haustiere:
+  setting:
+  settings:
+  einstellung:
+  einstellungen:
   bapi:
   api:
   bits:

@@ -160,10 +160,29 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
             builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
             return builder.buildInventory();
         } else if(type == SettingsInventoryTypes.LOCAL) {
-            InventoryBuilder builder = new InventoryBuilder("§b§lRe§f§lfluxo§c§lSettings", InventoryType.HOPPER);
+            InventoryBuilder builder = new InventoryBuilder("§b§lRe§f§lfluxo§c§lSettings", InventoryType.DISPENSER);
             SettingsManager settingsManager = new SettingsManager();
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            switch (settingsManager.getSettingValue(apiPlayer, Settings.NavigatorInHotbar)) {
+                case YES:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.NavigatorInHotbar), Material.COMPASS, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.NavigatorInHotbar)"\n").setEnchanted(true).buildItem());
+                    break;
+                case NO:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.NavigatorInHotbar), Material.COMPASS, "\n§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.NavigatorInHotbar)"\n").buildItem());
+                    break;
+            }
 
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
 
+            switch (settingsManager.getSettingValue(apiPlayer, Settings.AutomaticTeleportToSpawnOnJoin)) {
+                case YES:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.AutomaticTeleportToSpawnOnJoin), Material.BEACON, "§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.AutomaticTeleportToSpawnOnJoin)+"\n").setEnchanted(true).buildItem());
+                    break;
+                case NO:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.AutomaticTeleportToSpawnOnJoin), Material.BEACON, "§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.AutomaticTeleportToSpawnOnJoin)+"\n").buildItem());
+                    break;
+            }
 
             return builder.buildInventory();
         } else {

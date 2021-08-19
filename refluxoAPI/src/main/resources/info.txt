@@ -23,5 +23,5 @@ global  | MySQL | InventoryAnimations             | YES, NO*
 global  | MySQL | Notifications                   | EVERY, SERVER, ANNOUNCEMENTS, NONE*
 global  | MySQL | Particles                       | EVERY, LESS, NONE*
 global  | MySQL | Sound                           | YES, NO*
-local   | Yaml  | AutomaticTeleportToSpawnOnJoin  | YES, NO
+local   | Yaml  | AutomaticTeleportToSpawnOnJoin  | YES, NO*
 local   | Yaml  | NavigatorInHotbar               | YES, NO

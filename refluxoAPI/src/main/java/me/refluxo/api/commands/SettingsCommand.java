@@ -66,7 +66,7 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
         Inventory gsettings = builder.addItemToInventory(new ItemUtil("", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                 .addItemToInventory(new ItemUtil("", Material.BLACK_STAINED_GLASS_PANE, "").buildItem())
                 .addItemToInventory(new ItemUtil(ChatADsName, ChatADs, ChatADsDes).buildItem())
-                .addItemToInventory(new ItemUtil(, InvAni, "§7Status: "+settingsManager.getSettingStatusMessage(apiPlayer, Settings.InventoryAnimations)).buildItem())
+                .addItemToInventory(new ItemUtil(InvAniName, InvAni, ChatADsDes).buildItem())
                 .addItemToInventory()
         return false;
     }

@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
@@ -126,17 +127,17 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
                     break;
             }
 
-                switch (settingsManager.getSettingValue( apiPlayer, Settings.Particles)) {
-                    case EVERY:
-                        builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Particles), Material.EXPERIENCE_BOTTLE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").setEnchanted(true).buildItem());
-                        break;
-                    case LESS:
-                        builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Particles), Material.EXPERIENCE_BOTTLE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").setEnchanted(true).buildItem());
-                        break;
-                    case NONE:
-                        builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Particles), Material.EXPERIENCE_BOTTLE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").buildItem());
-                        break;
-                }
+            switch (settingsManager.getSettingValue( apiPlayer, Settings.Particles)) {
+                case EVERY:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Particles), Material.EXPERIENCE_BOTTLE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").setEnchanted(true).buildItem());
+                    break;
+                case LESS:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Particles), Material.EXPERIENCE_BOTTLE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").setEnchanted(true).buildItem());
+                    break;
+                case NONE:
+                    builder.addItemToInventory(new ItemUtil(settingsManager.getSettingDisplayName(Settings.Particles), Material.EXPERIENCE_BOTTLE, "\n§7Status: " + settingsManager.getSettingStatusMessage(apiPlayer, Settings.ChatAds) + "\n").buildItem());
+                    break;
+            }
 
             switch (settingsManager.getSettingValue( apiPlayer, Settings.Sound)) {
                 case YES:
@@ -149,7 +150,7 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
 
             builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
             builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
-            builder.addItemToInventory(new ItemUtil("§cZurück!", Material.DARK_OAK_DOOR, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
             builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
             builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
             builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
@@ -186,7 +187,7 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
             }
 
             builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
-            builder.addItemToInventory(new ItemUtil("§cZurück!", Material.DARK_OAK_DOOR, "").buildItem());
+            builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
             builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
             builder.addItemToInventory(new ItemUtil("§k", Material.BLACK_STAINED_GLASS_PANE, "").buildItem());
             return builder.buildInventory();
@@ -196,37 +197,58 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
     }
 
     @EventHandler
-    public void onClick(InventoryClickEvent e) {
-        if(e.getCurrentItem() != null) {
-            if(e.getView().getTitle().equalsIgnoreCase("§b§lRe§f§lfluxo§c§lSettings")) {
-                e.setCancelled(true);
-                String Dname = e.getCurrentItem().getI18NDisplayName();
-                Player p = (Player) e.getWhoClicked();
-                switch (Dname) {
-                    case "§a§lGlobale Einstellungen":
-                        p.closeInventory();
-                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                            p.openInventory(getInventory(new APIPlayer(p), SettingsInventoryTypes.GLOBAL));
-                        }, 8);
-                        break;
-                    case "§cZurück!":
-                        p.closeInventory();
-                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                            p.openInventory(getInventory(new APIPlayer(p), SettingsInventoryTypes.MAIN));
-                        }, 8);
-                    case "§6§lLokale Einstellungen":
-                        p.closeInventory();
-                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                            p.openInventory(getInventory(new APIPlayer(p), SettingsInventoryTypes.LOCAL));
-                        }, 8);
-                    case "§":
-                        p.closeInventory();
-                        Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                            p.openInventory(getInventory(new APIPlayer(p), SettingsInventoryTypes.LOCAL));
-                        }, 8);
-                }
+    public void onClose(InventoryCloseEvent e) {
+        if(e.getView().getTitle().equalsIgnoreCase("§b§lRe§f§lfluxo§c§lSettings")) {
+            if(!e.getView().getTopInventory().contains(new ItemUtil("§a§lGlobale Einstellungen", Material.ENDER_CHEST, "").buildItem()) && !e.getView().getBottomInventory().contains(new ItemUtil("§a§lGlobale Einstellungen", Material.ENDER_CHEST, "").buildItem())) {
+                Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                    e.getPlayer().openInventory(getInventory(new APIPlayer((Player) e.getPlayer()), SettingsInventoryTypes.MAIN));
+                }, 20);
             }
         }
     }
 
+    @EventHandler
+    public void onClick(InventoryClickEvent e) {
+        if(e.getCurrentItem() != null) {
+            if(e.getView().getTitle().equalsIgnoreCase("§b§lRe§f§lfluxo§c§lSettings")) {
+                e.setCancelled(true);
+                String dName = e.getCurrentItem().getI18NDisplayName();
+                Player p = (Player) e.getWhoClicked();
+                APIPlayer apiPlayer = new APIPlayer(p);
+                SettingsManager settingsManager = new SettingsManager();
+                if(dName.equalsIgnoreCase("§a§lGlobale Einstellungen")) {
+                    p.closeInventory();
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                        p.openInventory(getInventory(new APIPlayer(p), SettingsInventoryTypes.GLOBAL));
+                    }, 8);
+                } else if(dName.equalsIgnoreCase("§6§lLokale Einstellungen")) {
+                    p.closeInventory();
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                        p.openInventory(getInventory(new APIPlayer(p), SettingsInventoryTypes.LOCAL));
+                    }, 8);
+                } else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.AllowMessages))) {
+                    p.closeInventory();
+                    settingsManager.toggleSetting(apiPlayer, Settings.AllowMessages);
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                        p.openInventory(getInventory(apiPlayer, SettingsInventoryTypes.GLOBAL));
+                    }, 8);
+                } else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.))) {
+                    p.closeInventory();
+                    settingsManager.toggleSetting(apiPlayer, Settings.);
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                        p.openInventory(getInventory(apiPlayer, SettingsInventoryTypes.));
+                    }, 8);
+                }
+            }
+        }
+    }
+    /*
+                else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.))) {
+                    p.closeInventory();
+                    settingsManager.toggleSetting(apiPlayer, Settings.);
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                        p.openInventory(getInventory(apiPlayer, SettingsInventoryTypes.));
+                    }, 8);
+                }
+     */
 }

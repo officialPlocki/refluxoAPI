@@ -15,13 +15,13 @@ LESS
 
 GROUPS, SAVE INSTANCES, SETTINGS AND THEIR VALUES
 
-friends | MySQL | AllowFriendRequests             | YES, NO
-friends | MySQL | AllowMessagesFromEveryone       | Everyone, OnlyFriends
-friends | MySQL | AllowMessages                   | YES, NO
-global  | MySQL | ChatAds                         | EVERY, SERVER, PLAYERS, NONE *
-global  | MySQL | InventoryAnimations             | YES, NO*
-global  | MySQL | Notifications                   | EVERY, SERVER, ANNOUNCEMENTS, NONE*
-global  | MySQL | Particles                       | EVERY, LESS, NONE*
-global  | MySQL | Sound                           | YES, NO*
-local   | Yaml  | AutomaticTeleportToSpawnOnJoin  | YES, NO*
-local   | Yaml  | NavigatorInHotbar               | YES, NO
+friends | MySQL | AllowFriendRequests             | YES, NO /*
+friends | MySQL | AllowMessagesFromEveryone       | Everyone, OnlyFriends /*
+friends | MySQL | AllowMessages                   | YES, NO /*
+global  | MySQL | ChatAds                         | EVERY, SERVER, PLAYERS, NONE **
+global  | MySQL | InventoryAnimations             | YES, NO**
+global  | MySQL | Notifications                   | EVERY, SERVER, ANNOUNCEMENTS, NONE**
+global  | MySQL | Particles                       | EVERY, LESS, NONE**
+global  | MySQL | Sound                           | YES, NO**
+local   | Yaml  | AutomaticTeleportToSpawnOnJoin  | YES, NO**
+local   | Yaml  | NavigatorInHotbar               | YES, NO**

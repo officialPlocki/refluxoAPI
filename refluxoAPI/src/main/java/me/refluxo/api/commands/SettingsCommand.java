@@ -230,13 +230,52 @@ public class SettingsCommand extends Language implements CommandExecutor, Listen
                     p.closeInventory();
                     settingsManager.toggleSetting(apiPlayer, Settings.AllowMessages);
                     Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                        p.openInventory(getInventory(apiPlayer, SettingsInventoryTypes.GLOBAL));
                     }, 8);
-                } else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.))) {
+                } else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.AllowFriendRequests))) {
                     p.closeInventory();
-                    settingsManager.toggleSetting(apiPlayer, Settings.);
+                    settingsManager.toggleSetting(apiPlayer, Settings.AllowFriendRequests);
                     Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
-                        p.openInventory(getInventory(apiPlayer, SettingsInventoryTypes.));
+                    }, 8);
+                } else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.AllowMessagesFromEveryone))) {
+                    p.closeInventory();
+                    settingsManager.toggleSetting(apiPlayer, Settings.AllowMessagesFromEveryone);
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+
+                    }, 8);
+                } else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.ChatAds))) {
+                    p.closeInventory();
+                    settingsManager.toggleSetting(apiPlayer, Settings.ChatAds);
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                    }, 8);
+                } else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.InventoryAnimations))) {
+                    p.closeInventory();
+                    settingsManager.toggleSetting(apiPlayer, Settings.InventoryAnimations);
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                    }, 8);
+                } else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.Notifications))) {
+                    p.closeInventory();
+                    settingsManager.toggleSetting(apiPlayer, Settings.Notifications);
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                    }, 8);
+                } else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.Particles))) {
+                    p.closeInventory();
+                    settingsManager.toggleSetting(apiPlayer, Settings.Particles);
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                    }, 8);
+                } else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.Sound))) {
+                    p.closeInventory();
+                    settingsManager.toggleSetting(apiPlayer, Settings.Sound);
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                    }, 8);
+                } else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.NavigatorInHotbar))) {
+                    p.closeInventory();
+                    settingsManager.toggleSetting(apiPlayer, Settings.NavigatorInHotbar);
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
+                    }, 8);
+                } else if(dName.equalsIgnoreCase(settingsManager.getSettingDisplayName(Settings.AutomaticTeleportToSpawnOnJoin))) {
+                    p.closeInventory();
+                    settingsManager.toggleSetting(apiPlayer, Settings.AutomaticTeleportToSpawnOnJoin);
+                    Bukkit.getScheduler().runTaskLater(RefluxoAPI.getInstance(), () -> {
                     }, 8);
                 }
             }

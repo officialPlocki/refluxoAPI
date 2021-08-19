@@ -59,7 +59,7 @@ public class RefluxoAPI extends JavaPlugin {
         CoinsAPI.setup();
         registerEconomy();
         MySQLService service = new MySQLService();
-        MySQLService.connect("localhost", "in", "api", "ko0l99", "3306");
+        MySQLService.connect("test.mlbfan.org", "in", "api", "ko0l99", "3306");
         if(!MySQLService.isConnected()) {
             new Console("MySQL ist nicht verbunden. API wird deaktiviert.", "ServerAPI.java");
             Bukkit.getPluginManager().disablePlugin(this);

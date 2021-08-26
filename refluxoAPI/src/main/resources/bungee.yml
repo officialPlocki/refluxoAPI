@@ -1,0 +1,4 @@
+name: RefluxoAPI
+main: me.refluxo.api.bungeecord.RefluxoAPI
+version: 1.2
+author: Refluxo Development

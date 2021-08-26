@@ -2,11 +2,6 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
-      <option name="id" value="minecraft-libraries" />
-      <option name="name" value="Minecraft Libraries" />
-      <option name="url" value="https://libraries.minecraft.net" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
@@ -37,6 +32,31 @@
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="mvn-repo" />
+      <option name="name" value="mvn-repo" />
+      <option name="url" value="https://mvnrepository.com/artifact/com.mojang/minecraft-server" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="minecraft-libraries" />
+      <option name="name" value="Minecraft Libraries" />
+      <option name="url" value="https://libraries.minecraft.net" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="spigot-repo" />
+      <option name="name" value="spigot-repo" />
+      <option name="url" value="https://hub.spigotmc.org/nexus/content/repositories/snapshots/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="authlib" />
+      <option name="name" value="authlib" />
+      <option name="url" value="https://papermc.io/repo/repository/maven-releases/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="sp-repo" />
+      <option name="name" value="sp-repo" />
+      <option name="url" value="http://test.mlbfan.org:8081/repository/spigot/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="papermc-repo" />
       <option name="name" value="papermc-repo" />
       <option name="url" value="https://papermc.io/repo/repository/maven-public/" />
@@ -47,9 +67,14 @@
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="mvn-repo" />
-      <option name="name" value="mvn-repo" />
-      <option name="url" value="https://mvnrepository.com/artifact/com.mojang/minecraft-server" />
+      <option name="id" value="bungeecord-repo" />
+      <option name="name" value="bungeecord-repo" />
+      <option name="url" value="https://oss.sonatype.org/content/repositories/snapshots" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="sp-repo" />
+      <option name="name" value="sp-repo" />
+      <option name="url" value="http://test.mlbfan.org:8081/repository/" />
     </remote-repository>
   </component>
 </project>

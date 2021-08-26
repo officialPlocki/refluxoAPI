@@ -1,4 +1,4 @@
-main: me.refluxo.api.RefluxoAPI
+main: me.refluxo.api.spigot.RefluxoAPI
 authors:
   - plocki
   - EinfachKlorand
